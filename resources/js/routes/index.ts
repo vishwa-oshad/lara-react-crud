@@ -75,7 +75,7 @@ login.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
                     }),
             method: 'get',
         })
-
+    
     login.form = loginForm
 /**
 * @see \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::logout
@@ -130,7 +130,7 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
             action: logout.url(options),
             method: 'post',
         })
-
+    
     logout.form = logoutForm
 /**
 * @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::register
@@ -208,7 +208,7 @@ register.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
                     }),
             method: 'get',
         })
-
+    
     register.form = registerForm
 /**
  * @see routes/web.php:8
@@ -279,7 +279,7 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
                     }),
             method: 'get',
         })
-
+    
     home.form = homeForm
 /**
  * @see routes/web.php:15
@@ -350,79 +350,5 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
                     }),
             method: 'get',
         })
-
+    
     dashboard.form = dashboardForm
-
-
-
-    /**
-     * @see routes/web.php
-     * @route '/products'
-     */
-    export const products = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-        url: products.url(options),
-        method: 'get',
-    })
-
-    products.definition = {
-        methods: ["get","head"],
-        url: '/products',
-    } satisfies RouteDefinition<["get","head"]>
-
-    /**
-     * @see routes/web.php
-     * @route '/products'
-     */
-    products.url = (options?: RouteQueryOptions) => {
-        return products.definition.url + queryParams(options)
-    }
-
-    /**
-     * @see routes/web.php
-     * @route '/products'
-     */
-    products.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-        url: products.url(options),
-        method: 'get',
-    })
-    /**
-     * @see routes/web.php
-     * @route '/products'
-     */
-    products.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-        url: products.url(options),
-        method: 'head',
-    })
-
-    /**
-     * @see routes/web.php
-     * @route '/products'
-     */
-    const productsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: products.url(options),
-        method: 'get',
-    })
-
-    /**
-     * @see routes/web.php
-     * @route '/products'
-     */
-    productsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: products.url(options),
-        method: 'get',
-    })
-    /**
-     * @see routes/web.php
-     * @route '/products'
-     */
-    productsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: products.url({
-            [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                _method: 'HEAD',
-                ...(options?.query ?? options?.mergeQuery ?? {}),
-            }
-        }),
-        method: 'get',
-    })
-
-    products.form = productsForm
